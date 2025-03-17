@@ -1,24 +1,24 @@
 'use strict'
-const API='https://jsonplaceholder.typicode.com/users'
+const API='https://jsonplaceholder.typicode.com/userss'
 const getData=async(resource)=>{
-    const reponse=await fetch(resource)
+    try{
+        const reponse=await fetch(resource)
+    if(!reponse.ok)
+        throw new Error("Ma'lumotni olishda xatolik")
     const data=await reponse.json()
     return data
-    
+   
+    }catch(error){
+        console.error("Xatolik",error.message);
+        
+    } 
     
 }
     
     
     
 getData(API)
-.then((res)=>{
-    console.log(res);
-    
-})
-.catch((err)=>{
-    console.log(err);
-    
-})
+
 
 // console.log('First');
 // setTimeout(()=>{
